@@ -24,6 +24,8 @@ describe('Main page, get auto rating button', () => {
 
     cy.get(formStepTwo.citySelect, { timeout: 6000 }).should('be.visible');
 
+    cy.url().should('include', '/wizard-finish');
+
     cy.wait('@getOrder', { timeout: 20000 }).then((xhr) => {
       expect(xhr.response.statusCode).to.eq(200);
       expect(xhr.response.body.error).to.eq(null);

@@ -1,7 +1,6 @@
 // @ts-check
 const { test, expect, chromium } = require('@playwright/test');
-const { formStepOne } = require('../fixtures/selectors');
-const { formStepTwo } = require('../../cypress/fixtures/selectors');
+const { formStepOne, formStepTwo } = require('../fixtures/selectors');
 
 test.describe('Main page, get auto rating button', () => {
   let browser;
@@ -23,5 +22,6 @@ test.describe('Main page, get auto rating button', () => {
     await page.locator(formStepOne.getPriceButton).click();
 
     await expect(page.locator(formStepTwo.citySelect)).toBeVisible();
+    await expect(page).toHaveURL('https://carprice.ru/wizard-finish');
   });
 });
